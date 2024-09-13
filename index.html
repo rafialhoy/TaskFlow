@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TaskFlow</title>
+  <link rel="stylesheet" href="stlye.css">
+</head>
+<body>
+  <!-- Navbar -->
+  <nav>
+    <div class="logo">TaskFlow</div>
+  </nav>
+
+    <!-- Add Task Button -->
+    <button class="add-task-btn" id="open-modal-btn">Add Task</button>
+
+  <!-- Main Container -->
+  <div class="kanban-container">
+    <!-- Pipeline Column -->
+    <div class="kanban-column">
+      <div class="column-header">
+        <h2>Pipeline</h2>
+        <span class="task-count">0</span>
+      </div>
+      <div class="kanban-tasks" id="pipeline"></div>
+    </div>
+
+    <!-- In Progress Column -->
+    <div class="kanban-column">
+      <div class="column-header">
+        <h2>In Progress</h2>
+        <span class="task-count">0</span>
+      </div>
+      <div class="kanban-tasks" id="in-progress"></div>
+    </div>
+
+    <!-- Ready Column -->
+    <div class="kanban-column">
+      <div class="column-header">
+        <h2>Ready</h2>
+        <span class="task-count">0</span>
+      </div>
+      <div class="kanban-tasks" id="ready"></div>
+    </div>
+
+    <!-- Blocked Column -->
+    <div class="kanban-column">
+      <div class="column-header">
+        <h2>Blocked</h2>
+        <span class="task-count">0</span>
+      </div>
+      <div class="kanban-tasks" id="blocked"></div>
+    </div>
+  </div>
+
+
+
+  <!-- Task Creation Modal -->
+  <div class="modal" id="task-modal">
+    <div class="modal-content">
+      <span class="close-btn" id="close-modal-btn">&times;</span>
+      <h2>Create a New Task</h2>
+      <form id="task-form">
+        <input type="text" id="task-name" placeholder="Task Name" required>
+        <textarea id="task-desc" placeholder="Task Description"></textarea>
+        <select id="task-category">
+          <option value="Personal">Personal</option>
+          <option value="Family Office">Family Office</option>
+          <option value="University">University</option>
+          <option value="Full-Time Job">Full-Time Job</option>
+        </select>
+        <input type="date" id="task-deadline" required>
+        <button type="submit">Add Task</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

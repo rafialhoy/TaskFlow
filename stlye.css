@@ -1,0 +1,265 @@
+/* Root Variables */
+:root {
+    --bg-body: #121212; /* Very dark background for body */
+    --bg-column: #1E1E1E; /* Dark gray background for columns */
+    --bg-pipeline: #f2f2f2; /* Light Grey */
+    --bg-in-progress: #e0f7fa; /* Light Blue */
+    --bg-ready: #e8f5e9; /* Light Green */
+    --bg-blocked: #ffebee; /* Light Red */
+  
+    --text-color-light: #ffffff; /* Light text */
+    --text-color-dark: #000000; /* Dark text */
+    
+    --border-radius: 10px;
+    --column-width: 100%;
+    --column-spacing: 1rem;
+  
+    --font-family: 'Arial', sans-serif;
+    --font-size: 16px;
+  }
+  
+  /* General Reset */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body, html {
+    height: 100%;
+  }
+  
+  body {
+    font-family: var(--font-family);
+    font-size: var(--font-size);
+    background-color: var(--bg-body);
+    color: var(--text-color-dark);
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Navbar */
+  nav {
+    background-color: var(--bg-column);
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .logo {
+    color: var(--text-color-light);
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  /* Main Container */
+  .kanban-container {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+    gap: var(--column-spacing);
+    height: calc(100vh - 50px); /* Full viewport height minus navbar height */
+    box-sizing: border-box;
+  }
+  
+  /* Kanban Column Styles */
+  .kanban-column {
+    width: var(--column-width);
+    border-radius: var(--border-radius);
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    box-sizing: border-box;
+  }
+  
+  /* Column Headers */
+  .column-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #ffffff;
+    border-radius: var(--border-radius);
+    margin-bottom: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .column-header h2 {
+    font-size: 18px;
+    margin: 0;
+    font-weight: bold;
+  }
+  
+  .task-count {
+    background-color: #ff9800;
+    width: 30px;              /* Set a fixed width */
+    height: 30px;             /* Set the height to match width */
+    border-radius: 50%;       /* 50% for a perfect circle */
+    color: var(--text-color-light);
+    font-weight: bold;
+    text-align: center;       /* Center text horizontally */
+    line-height: 30px;        /* Center text vertically by matching the height */
+    font-size: 14px;          /* Adjust the font size if necessary */
+  }
+  
+  /* Column Backgrounds */
+  #pipeline {
+    background-color: var(--bg-pipeline);
+  }
+  
+  #in-progress {
+    background-color: var(--bg-in-progress);
+  }
+  
+  #ready {
+    background-color: var(--bg-ready);
+  }
+  
+  #blocked {
+    background-color: var(--bg-blocked);
+  }
+  
+  /* Task Card Styles */
+  .kanban-tasks {
+    flex-grow: 1;
+    padding: 10px;
+    border-radius: var(--border-radius);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    overflow-y: auto;
+  }
+  
+  .task-card {
+    position: relative;
+    background-color: #ffffff;
+    padding: 15px;
+    border-radius: var(--border-radius);
+    box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: transform 0.2s;
+    cursor: grab;
+  }
+
+  /* "X" delete button */
+.close-card {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+  }
+  
+  .close-card:hover {
+    color: red; /* Change color on hover to give feedback */
+  }
+  
+  .task-card:hover {
+    transform: scale(1.03);
+  }
+  
+  .task-card-info {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .task-card p {
+    margin-bottom: 5px;
+  }
+  
+  .task-icons {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+  }
+  
+  .task-icon {
+    font-size: 16px;
+    color: #888;
+  }
+  
+  
+  /* Add Task Button */
+.add-task-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    background-color: #3E7B52;
+    color: white;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-size: 16px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  .add-task-btn:hover {
+    background-color: #2f6241;
+  }
+  
+  /* Modal Styles */
+  .modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: var(--border-radius);
+    width: 400px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+    position: relative;
+  }
+  
+  .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  input, textarea, select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: var(--border-radius);
+    font-size: 14px;
+  }
+  
+  button[type="submit"] {
+    background-color: #3E7B52;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #2f6241;
+  }
+
+  /* Style for tasks due today */
+.due-today {
+    box-shadow: 0px 4px 15px rgba(255, 0, 0, 0.5); /* Red-ish shadow */
+    border: 2px solid rgba(255, 0, 0, 0.7); /* Red-ish border */
+  }
